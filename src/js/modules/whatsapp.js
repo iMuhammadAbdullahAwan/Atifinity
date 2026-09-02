@@ -11,10 +11,7 @@
 window.Affinity = window.Affinity || {};
 
 (function () {
-  // TODO: placeholder business number supplied for build-out — confirm/replace
-  // with Affinity's live WhatsApp Business number before this goes anywhere near
-  // production.
-  var WHATSAPP_NUMBER = '923498866549';
+  var WHATSAPP_NUMBER = '923488164928';
 
   function buildLink(message) {
     var base = 'https://wa.me/' + WHATSAPP_NUMBER;
