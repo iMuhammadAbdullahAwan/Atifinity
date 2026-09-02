@@ -1,8 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 40" width="172" height="40" role="img" aria-labelledby="atifinityLogoTitle">
   <title id="atifinityLogoTitle">Atifinity</title>
-  <!-- Solid two-tone "A" mark — red left stroke, blue right stroke, blue crossbar — matching the real Atifinity brand mark (no gradient blend). -->
+  <!-- Solid two-tone "A" mark — red left stroke, blue right stroke, blue crossbar — matching the real Atifinity brand mark (no gradient blend).
+       This standalone file is referenced only by the JSON-LD "logo" field for
+       external consumers (search engines, crawlers), so its wordmark uses a
+       fixed dark fill that reads on the light background those contexts
+       assume. The on-page logo in index.html is an inline <svg> instead, with
+       fill="currentColor" on the wordmark so it follows the site's ink color
+       and switches with light/dark theme automatically. -->
   <path d="M20,4 L4,35 L12,35 L25,14 Z" fill="#E32227"/>
   <path d="M27.5,16 L36,35 L28.5,35 L22,22 Z" fill="#1E3CFF"/>
   <path d="M18,28 L25,28 L27,35 L13.5,35 Z" fill="#1E3CFF"/>
-  <text x="48" y="27" font-family="Archivo, sans-serif" font-size="19" font-weight="700" letter-spacing="0.01em" fill="#F2F3F6">atifinity</text>
+  <text x="48" y="27" font-family="Archivo, sans-serif" font-size="19" font-weight="700" letter-spacing="0.01em" fill="#11131A">atifinity</text>
 </svg>

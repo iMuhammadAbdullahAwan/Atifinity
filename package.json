@@ -6,7 +6,8 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --minify",
     "build:js": "esbuild src/js/main.js src/js/modules/*.js --minify --outdir=dist/js --outbase=src/js",
-    "build": "npm run build:css && npm run build:js"
+    "build:bundle": "node scripts/bundle-js.mjs",
+    "build": "npm run build:css && npm run build:js && npm run build:bundle"
   },
   "keywords": [],
   "author": "",
