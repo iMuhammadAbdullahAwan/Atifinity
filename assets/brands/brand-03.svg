@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 28" width="150" height="28" role="img" aria-label="Veritasium">
+  <circle cx="12" cy="14" r="9" fill="none" stroke="#F7F7FA" stroke-width="1.6" opacity="0.85"/>
+  <path d="M8 14 L11 17 L17 10" stroke="#F7F7FA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <text x="28" y="19" font-family="Poppins, sans-serif" font-size="14" font-weight="600" letter-spacing="0.02em" fill="#F7F7FA" opacity="0.85">VERITASIUM</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#080A10"/>
+  <!-- Solid two-tone "A" mark — red left stroke, blue right stroke, blue crossbar. -->
+  <path d="M16,4.8 L4.5,27.2 L10.2,27.2 L19.6,12 Z" fill="#E32227"/>
+  <path d="M21.4,13.5 L27.5,27.2 L22.1,27.2 L17.4,17.8 Z" fill="#1E3CFF"/>
+  <path d="M14.6,22.1 L19.6,22.1 L21,27.2 L11.3,27.2 Z" fill="#1E3CFF"/>
+</svg>

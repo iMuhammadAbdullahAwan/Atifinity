@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 28" width="150" height="28" role="img" aria-label="Think Media">
+  <circle cx="10" cy="14" r="8" fill="none" stroke="#F7F7FA" stroke-width="1.6" opacity="0.85"/>
+  <circle cx="10" cy="14" r="2.6" fill="#F7F7FA" opacity="0.85"/>
+  <text x="24" y="19" font-family="Poppins, sans-serif" font-size="15" font-weight="600" fill="#F7F7FA" opacity="0.85">Think Media</text>
+</svg>

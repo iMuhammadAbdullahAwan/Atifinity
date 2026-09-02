@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Atifinity — We plan your content. We produce your videos. We grow your channel.">
+  <rect width="1200" height="630" fill="#080A10"/>
+  <circle cx="900" cy="280" r="260" fill="#1E3CFF" opacity="0.14"/>
+  <!-- Solid two-tone "A" mark — red left stroke, blue right stroke, blue crossbar -->
+  <path d="M900,140 L790,398 L840,398 L928,208 Z" fill="#E32227"/>
+  <path d="M949,220 L1010,398 L957,398 L910,262 Z" fill="#1E3CFF"/>
+  <path d="M885,330 L928,330 L942,398 L845,398 Z" fill="#1E3CFF"/>
+  <text x="90" y="270" font-family="Archivo, sans-serif" font-size="52" font-weight="800" fill="#F2F3F6">We Plan Your Content.</text>
+  <text x="90" y="335" font-family="Archivo, sans-serif" font-size="52" font-weight="800" fill="#F2F3F6">We Produce Your Videos.</text>
+  <text x="90" y="400" font-family="Archivo, sans-serif" font-size="52" font-weight="800" fill="#E32227">We Grow Your Channel.</text>
+  <text x="90" y="460" font-family="Archivo, sans-serif" font-size="20" fill="#949AA8">ATIFINITY — YouTube Growth Studio</text>
+</svg>
