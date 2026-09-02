@@ -5,404 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Atifinity — Creative. Connected. Limitless.</title>
 <meta name="description" content="Atifinity — Creative. Connected. Limitless. We plan, produce, and manage YouTube content for creators and brands." />
-<meta name="theme-color" content="#080A10" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://imuhammadabdullahawan.github.io/Atifinity/" />
+
+<!-- Matches the CSS theme below: near-black browser chrome in dark mode,
+     near-white in light mode — no manual toggle, same as the page itself. -->
+<meta name="theme-color" content="#08090F" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#FAFAFC" media="(prefers-color-scheme: light)" />
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 <meta property="og:title" content="Atifinity — Creative. Connected. Limitless." />
 <meta property="og:description" content="Atifinity — Creative. Connected. Limitless. We plan, produce, and manage YouTube content for creators and brands." />
-<meta property="og:image" content="assets/img/og-cover.svg" />
+<meta property="og:image" content="https://imuhammadabdullahawan.github.io/Atifinity/assets/img/og-cover.svg" />
+<meta property="og:url" content="https://imuhammadabdullahawan.github.io/Atifinity/" />
 <meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Atifinity — Creative. Connected. Limitless." />
+<meta name="twitter:description" content="Atifinity — Creative. Connected. Limitless. We plan, produce, and manage YouTube content for creators and brands." />
+<meta name="twitter:image" content="https://imuhammadabdullahawan.github.io/Atifinity/assets/img/og-cover.svg" />
+
+<!-- Machine-readable identity for search engines and AI/agentic crawlers
+     (ChatGPT, Perplexity, Claude, etc.) that read structured data instead
+     of guessing from prose — see robots.txt for the crawl policy those
+     same agents follow. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Atifinity",
+  "url": "https://imuhammadabdullahawan.github.io/Atifinity/",
+  "logo": "https://imuhammadabdullahawan.github.io/Atifinity/assets/img/logo.svg",
+  "description": "Atifinity plans, produces, and manages YouTube content for creators and brands.",
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hello@atifinity.studio",
+    "contactType": "sales"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Expanded:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<!-- Tailwind CSS v4, compiled live in the browser — no build step, so the
-     site renders correctly as static files on GitHub Pages (there's no CI
-     step to run `tailwindcss --build`). The theme tokens and component
-     classes below are the CSS-first equivalent of the old
-     tailwind.config.js + src/css/input.css pair. -->
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<style type="text/tailwindcss">
-  /* ==========================================================================
-     ATIFINITY DESIGN SYSTEM v2 — theme tokens
-     ==========================================================================
-     The palette below is sampled directly from Atifinity's actual logo (a
-     red-and-blue "A" triangle mark) — it is not an invented brand direction.
+<!-- LCP element: the hero mark, see #top below — hinting it early shaves
+     the render-blocking-free path to first paint. -->
+<link rel="preload" as="image" href="assets/img/hero-graphic.svg" fetchpriority="high" />
 
-     Two layers:
-     1. Raw brand values live in :root (prefixed --raw-*, to avoid a
-        self-referential var() when @theme below maps them to the
-        same-named Tailwind token) as space-separated RGB channels — reused
-        as either an opaque color or with a manual alpha, e.g.
-        rgb(var(--raw-ink) / 0.045) in the utilities below.
-     2. @theme maps each one to a named Tailwind color (bg-primary,
-        text-accent/40, border-ink-muted, …) — Tailwind v4 generates the
-        opacity-modifier variants automatically, no <alpha-value>
-        indirection needed.
-
-     To retheme the entire site (new brand color, new background, new type
-     scale), edit the :root variables and @theme block below — nothing else
-     needs to change for a brand-level update. */
-  :root {
-    --color-bg: 8 10 16; /* base page ground — near-black with a faint cool/blue cast, echoing the mark */
-    --color-surface: 19 22 31; /* card / row surface, one step up from bg */
-    --color-surface-elevated: 25 29 40; /* the ONE elevated surface — featured package, simulator panel */
-
-    --raw-ink: 242 243 246; /* primary text — cool-neutral off-white */
-    --raw-ink-muted: 148 154 168; /* secondary text — cool grey */
-
-    /* Sampled from the real Atifinity logo. Two hues, each with one job —
-       not four rotating accents.
-         primary → Atifinity's voice (the mark's dominant red stroke):
-                   links, icons, focus rings, quiet accents
-         accent  → the ONE "act now" color (the mark's blue triangle):
-                   primary CTA fill, the recommended package flag. */
-    --raw-primary: 227 34 39; /* red — brand primary */
-    --raw-primary-bright: 255 60 60; /* brighter red for active states */
-    --raw-accent: 30 60 255; /* blue — action/CTA color */
-    --raw-accent-deep: 20 40 200; /* deeper blue for hover */
-  }
-
-  @theme {
-    /* ---- Ground / text / brand colors ---------------------------------- */
-    --color-base: rgb(var(--color-bg));
-    --color-panel: rgb(var(--color-surface));
-    --color-panel-high: rgb(var(--color-surface-elevated));
-    --color-ink: rgb(var(--raw-ink));
-    --color-ink-muted: rgb(var(--raw-ink-muted));
-    --color-primary: rgb(var(--raw-primary));
-    --color-primary-bright: rgb(var(--raw-primary-bright));
-    --color-accent: rgb(var(--raw-accent));
-    --color-accent-deep: rgb(var(--raw-accent-deep));
-
-    /* ---- Breakpoints ----------------------------------------------------- */
-    --breakpoint-sm: 480px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 1024px;
-    --breakpoint-xl: 1280px;
-    --breakpoint-2xl: 1440px;
-
-    /* ---- Type ------------------------------------------------------------
-       display/h1/h2 are fluid so they never need a breakpoint stack of
-       one-off sizes in the markup. */
-    --font-display: "Archivo Expanded", "Arial Narrow", sans-serif;
-    --font-sans: Archivo, ui-sans-serif, system-ui, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-
-    --text-display: clamp(2.75rem, 2rem + 3.2vw, 5.25rem);
-    --text-display--line-height: 0.98;
-    --text-display--letter-spacing: -0.02em;
-    --text-h1: clamp(2.25rem, 1.8rem + 2vw, 3.25rem);
-    --text-h1--line-height: 1.02;
-    --text-h1--letter-spacing: -0.01em;
-    --text-h2: clamp(1.75rem, 1.5rem + 1.1vw, 2.5rem);
-    --text-h2--line-height: 1.05;
-    --text-h2--letter-spacing: -0.01em;
-    --text-h3: 1.25rem;
-    --text-h3--line-height: 1.3;
-    --text-body: 1rem;
-    --text-body--line-height: 1.7;
-    --text-small: 0.875rem;
-    --text-small--line-height: 1.55;
-    --text-label: 0.75rem;
-    --text-label--line-height: 1.4;
-    --text-label--letter-spacing: 0.14em;
-    --text-button: 0.875rem;
-    --text-button--line-height: 1;
-    --text-button--letter-spacing: 0.01em;
-
-    /* ---- Radius / shadow --------------------------------------------------
-       Neutral shadows only — no colored "glow" shadows. Elevation is used
-       on exactly one surface at a time (the featured package card), never
-       as a decorative default on buttons/icons. */
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 22px;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 24px 48px -20px rgba(0, 0, 0, 0.55);
-
-    /* ---- Motion ------------------------------------------------------- */
-    --animate-float: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
-  }
-
-  /* ==========================================================================
-     Base
-     ========================================================================== */
-  @layer base {
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      @apply bg-base text-ink font-sans antialiased;
-      font-weight: 400;
-    }
-
-    ::selection {
-      @apply bg-primary/30 text-ink;
-    }
-
-    h1,
-    h2,
-    h3 {
-      @apply font-display font-bold text-ink;
-      text-wrap: balance;
-    }
-
-    a {
-      @apply transition-colors duration-200;
-    }
-
-    /* Respect reduced-motion preference across the whole site */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  }
-
-  /* ---- Buttons ------------------------------------------------------
-     One button language, three roles. Modest radius (not a pill) reads
-     more like a designed agency CTA than a generic SaaS button; no glow
-     shadow — hover is a color shift plus a small lift, nothing louder.
-
-     Defined via @utility (not a plain @layer components class) because
-     .btn-primary/.btn-red/.btn-ghost below need to @apply it — Tailwind v4
-     only allows @apply to reference real utilities, not arbitrary custom
-     classes. */
-  @utility btn {
-    @apply relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-button font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
-    padding: 0.9rem 1.6rem;
-  }
-
-  /* ==========================================================================
-     COMPONENTS
-     ========================================================================== */
-  @layer components {
-    /* ---- Section scaffolding -------------------------------------------- */
-    .container-x {
-      @apply mx-auto w-full px-6 sm:px-8 lg:px-10;
-      max-width: 1280px;
-    }
-
-    .section {
-      padding-top: clamp(4rem, 3.2rem + 3.5vw, 7.5rem);
-      padding-bottom: clamp(4rem, 3.2rem + 3.5vw, 7.5rem);
-    }
-
-    /* Small mono-set kicker label above a section heading. Deliberately NOT
-       a pill/badge — a quiet typographic marker, not another rounded shape. */
-    .eyebrow {
-      @apply inline-flex items-center gap-2 font-mono text-label uppercase text-primary;
-    }
-
-    .section-title {
-      @apply text-h2;
-    }
-
-    /* One-line supporting sentence under a section-title. Every section
-       intro uses this one class so the page reads as one voice. */
-    .section-lede {
-      @apply mx-auto mt-4 max-w-lg text-small text-ink-muted;
-    }
-
-    /* Reserved for exactly two moments on the whole page (hero + closing
-       statement) — the brand gradient applied to a headline word. Everywhere
-       else, hierarchy comes from type weight/size, not color. */
-    .text-grad {
-      @apply bg-clip-text text-transparent;
-      background-image: linear-gradient(90deg, rgb(var(--raw-primary-bright)) 0%, rgb(var(--raw-accent)) 100%);
-    }
-
-    /* ---- Surfaces ---------------------------------------------------------
-       Three levels only:
-         .surface-row      flat editorial row — a hairline divider, no box
-         .card             standard bordered surface (simulator, non-featured
-                            package tiers)
-         .card-featured    the ONE elevated surface on the page */
-    .surface-row {
-      @apply border-t border-ink/10;
-    }
-    .surface-row:last-child {
-      @apply border-b;
-    }
-
-    .card {
-      @apply rounded-md border border-ink/10 bg-panel;
-    }
-
-    .card-featured {
-      @apply relative rounded-lg border border-accent/40 bg-panel-high shadow-md;
-    }
-
-    /* White text (not the `ink` token) deliberately — both brand fills
-       (accent blue and primary red) are dark/saturated enough that white is
-       the one label color that reads cleanly on either, so a button can move
-       between the two brand hues without a text-color change. */
-    .btn-primary {
-      @apply btn bg-accent text-white hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-0;
-    }
-
-    /* Same white-on-brand-fill treatment as .btn-primary, in the red half of
-       the palette — for the rare CTA that should read as "urgent" rather
-       than "act now" (accent stays the one default CTA color). */
-    .btn-red {
-      @apply btn bg-primary text-white hover:bg-primary-bright hover:-translate-y-0.5 active:translate-y-0;
-    }
-
-    .btn-ghost {
-      @apply btn border border-ink/15 bg-transparent text-ink hover:border-ink/35 hover:bg-ink/5;
-    }
-
-    .btn-sm {
-      padding: 0.65rem 1.25rem;
-      font-size: 0.8125rem;
-    }
-
-    .nav-link {
-      @apply relative text-small font-medium text-ink-muted transition-colors hover:text-ink;
-    }
-
-    .nav-link.is-active {
-      @apply text-ink;
-    }
-
-    .nav-link.is-active::after {
-      content: '';
-      @apply absolute -bottom-1.5 left-0 h-[2px] w-4 rounded-full bg-accent;
-    }
-
-    /* Typographic label, not a pill — used for service category tags. */
-    .tag {
-      @apply font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted;
-    }
-
-    /* Small solid flag — reserved for the one "Recommended" package marker. */
-    .badge-accent {
-      @apply inline-flex items-center gap-1.5 rounded-sm bg-accent px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-white;
-    }
-
-    /* ---- FAQ --------------------------------------------------------------
-       Native <details>/<summary> — free keyboard support, free
-       screen-reader semantics, zero extra JS. Editorial list, not a stack of
-       cards: a hairline divider per row instead of a rounded box. */
-    .faq-item {
-      @apply border-t border-ink/10;
-    }
-
-    .faq-item summary {
-      @apply flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-h3 font-display font-bold text-ink marker:content-none;
-    }
-
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-item summary .faq-chevron {
-      @apply h-4 w-4 shrink-0 text-ink-muted transition-transform duration-300;
-    }
-
-    .faq-item[open] summary .faq-chevron {
-      @apply rotate-180 text-primary;
-    }
-
-    .faq-item .faq-answer {
-      @apply max-w-2xl pb-6 text-body text-ink-muted;
-    }
-
-    /* Growth Simulator sliders: a thin brand-gradient thumb on a translucent
-       track. Thumb/track pseudo-elements need real CSS rules per browser
-       engine, so this can't be pure @apply on the base selector. */
-    .range-slider {
-      @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-ink/10 outline-none;
-    }
-    .range-slider::-webkit-slider-runnable-track {
-      @apply h-1.5 rounded-full;
-    }
-    .range-slider::-moz-range-track {
-      @apply h-1.5 rounded-full bg-ink/10;
-    }
-    .range-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      margin-top: -6px;
-      border-radius: 9999px;
-      background: linear-gradient(90deg, rgb(var(--raw-primary-bright)), rgb(var(--raw-accent)));
-      border: 2px solid rgb(var(--color-bg));
-      cursor: pointer;
-    }
-    .range-slider::-moz-range-thumb {
-      width: 18px;
-      height: 18px;
-      border-radius: 9999px;
-      background: linear-gradient(90deg, rgb(var(--raw-primary-bright)), rgb(var(--raw-accent)));
-      border: 2px solid rgb(var(--color-bg));
-      cursor: pointer;
-    }
-    .range-slider:focus-visible {
-      @apply outline outline-2 outline-offset-4 outline-primary;
-    }
-
-    /* Live numbers (Growth Simulator results, stat figures) — mono, tabular,
-       a deliberate "instrument panel" texture reserved for real data. */
-    .stat-mono {
-      @apply font-mono tabular-nums transition-transform duration-200;
-    }
-
-    /* Wipe-reveal used once, on the Example Engagement visual — see
-       brand-motion.js's initClipReveal. Distinct from the generic
-       opacity/translate fade every other section uses via [data-reveal]. */
-    .clip-reveal {
-      clip-path: inset(0 100% 0 0);
-      transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .clip-reveal.is-visible {
-      clip-path: inset(0 0 0 0);
-    }
-  }
-
-  /* ==========================================================================
-     Utilities / decorative layers
-     ========================================================================== */
-  @layer utilities {
-    .bg-grid {
-      background-image:
-        linear-gradient(rgb(var(--raw-ink) / 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgb(var(--raw-ink) / 0.045) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-
-    .bg-radial-fade {
-      background: radial-gradient(60% 60% at 50% 40%, rgb(var(--raw-primary) / 0.18), transparent 70%);
-    }
-
-    .mask-fade-x {
-      -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-      mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-    }
-
-    .scrollbar-none::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-none {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-  }
-</style>
+<!-- Compiled by the "Build & deploy" GitHub Actions workflow from
+     src/css/input.css on every push (see .github/workflows/deploy.yml) —
+     never edited or committed by hand. Ships as a single static
+     stylesheet so GitHub Pages serves it with no runtime compile step,
+     no render-blocking JS, and no flash of unstyled content. -->
+<link rel="stylesheet" href="dist/css/output.css" />
 </head>
 <body class="bg-base text-ink overflow-x-hidden">
 
@@ -701,7 +357,7 @@
       <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal data-reveal-delay="100" data-portfolio-grid>
 
         <!-- Card 1 -->
-        <div class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-video-modal="assets/portfolio/america-bridge.mp4" data-video-title="America Bridge">
+        <button type="button" class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-video-modal="assets/portfolio/america-bridge.mp4" data-video-title="America Bridge">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/america-bridge.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -715,10 +371,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">America Bridge</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 2 -->
-        <div class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-video-modal="assets/portfolio/cia.mp4" data-video-title="CIA">
+        <button type="button" class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-video-modal="assets/portfolio/cia.mp4" data-video-title="CIA">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/cia.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -732,10 +388,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">CIA</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 3 -->
-        <div class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-video-modal="assets/portfolio/debt.mp4" data-video-title="Debt">
+        <button type="button" class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-video-modal="assets/portfolio/debt.mp4" data-video-title="Debt">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/debt.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -749,10 +405,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Debt</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 4 -->
-        <div class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-video-modal="assets/portfolio/different-eye-colour-advantages.mp4" data-video-title="Different Eye Colour Advantages">
+        <button type="button" class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-video-modal="assets/portfolio/different-eye-colour-advantages.mp4" data-video-title="Different Eye Colour Advantages">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/different-eye-colour-advantages.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -766,10 +422,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Different Eye Colour Advantages</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 5 -->
-        <div class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-video-modal="assets/portfolio/drug-cartel.mp4" data-video-title="Drug Cartel">
+        <button type="button" class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-video-modal="assets/portfolio/drug-cartel.mp4" data-video-title="Drug Cartel">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/drug-cartel.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -783,10 +439,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Drug Cartel</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 6 -->
-        <div class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-video-modal="assets/portfolio/eurodollars.mp4" data-video-title="Eurodollars">
+        <button type="button" class="group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-video-modal="assets/portfolio/eurodollars.mp4" data-video-title="Eurodollars">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/eurodollars.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -800,10 +456,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Eurodollars</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 7 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/honda.mp4" data-video-title="Honda">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/honda.mp4" data-video-title="Honda">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/honda.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -817,10 +473,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Honda</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 8 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/mcintosh.mp4" data-video-title="McIntosh">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/mcintosh.mp4" data-video-title="McIntosh">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/mcintosh.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -834,10 +490,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">McIntosh</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 9 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/melbourne.mp4" data-video-title="Melbourne">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/melbourne.mp4" data-video-title="Melbourne">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/melbourne.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -851,10 +507,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Melbourne</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 10 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/mexico.mp4" data-video-title="Mexico">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/mexico.mp4" data-video-title="Mexico">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/mexico.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -868,10 +524,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Mexico</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 11 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/neom.mp4" data-video-title="Neom">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/neom.mp4" data-video-title="Neom">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/neom.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -885,10 +541,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Neom</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 12 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/petrodollar.mp4" data-video-title="Petrodollar">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/petrodollar.mp4" data-video-title="Petrodollar">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/petrodollar.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -902,10 +558,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Petrodollar</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 13 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/pied-piper.mp4" data-video-title="Pied Piper">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/pied-piper.mp4" data-video-title="Pied Piper">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/pied-piper.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -919,10 +575,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Pied Piper</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 14 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/the-promise.mp4" data-video-title="The Promise">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/the-promise.mp4" data-video-title="The Promise">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/the-promise.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -936,10 +592,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">The Promise</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 15 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/us-navy-destroyer.mp4" data-video-title="US Navy Destroyer">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/us-navy-destroyer.mp4" data-video-title="US Navy Destroyer">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/us-navy-destroyer.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -953,10 +609,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">US Navy Destroyer</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 16 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/wildling.mp4" data-video-title="Wildling">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/wildling.mp4" data-video-title="Wildling">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/wildling.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -970,10 +626,10 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Wildling</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
         <!-- Card 17 -->
-        <div class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg" data-portfolio-hidden data-video-modal="assets/portfolio/wizard-of-oz.mp4" data-video-title="Wizard of Oz">
+        <button type="button" class="hidden group relative cursor-pointer overflow-hidden rounded-md border border-ink/10 bg-panel transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg block w-full text-left" data-portfolio-hidden data-video-modal="assets/portfolio/wizard-of-oz.mp4" data-video-title="Wizard of Oz">
           <div class="relative aspect-video overflow-hidden">
             <video class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/portfolio/wizard-of-oz.mp4" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
             <div class="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/20">
@@ -987,7 +643,7 @@
             <p class="text-small font-medium text-ink transition-colors group-hover:text-primary">Wizard of Oz</p>
             <svg class="h-4 w-4 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
-        </div>
+        </button>
 
       </div>
 
@@ -1399,17 +1055,17 @@
   </div>
 </div>
 
-<script src="src/js/modules/whatsapp.js"></script>
-<script src="src/js/modules/nav.js"></script>
-<script src="src/js/modules/reveal.js"></script>
-<script src="src/js/modules/magnetic-button.js"></script>
-<script src="src/js/modules/logo-particles.js"></script>
-<script src="src/js/modules/parallax.js"></script>
-<script src="src/js/modules/cursor-glow.js"></script>
-<script src="src/js/modules/brand-motion.js"></script>
-<script src="src/js/modules/video-modal.js"></script>
-<script src="src/js/modules/portfolio-load-more.js"></script>
-<script src="src/js/modules/reviews-carousel.js"></script>
-<script src="src/js/main.js"></script>
+<script src="dist/js/modules/whatsapp.js"></script>
+<script src="dist/js/modules/nav.js"></script>
+<script src="dist/js/modules/reveal.js"></script>
+<script src="dist/js/modules/magnetic-button.js"></script>
+<script src="dist/js/modules/logo-particles.js"></script>
+<script src="dist/js/modules/parallax.js"></script>
+<script src="dist/js/modules/cursor-glow.js"></script>
+<script src="dist/js/modules/brand-motion.js"></script>
+<script src="dist/js/modules/video-modal.js"></script>
+<script src="dist/js/modules/portfolio-load-more.js"></script>
+<script src="dist/js/modules/reviews-carousel.js"></script>
+<script src="dist/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "name": "atifinity",
+  "version": "1.0.0",
+  "description": "Atifinity — Creative. Connected. Limitless. YouTube growth & content company landing page.",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --minify",
+    "build:js": "esbuild src/js/main.js src/js/modules/*.js --minify --outdir=dist/js --outbase=src/js",
+    "build": "npm run build:css && npm run build:js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4"
+  }
+}

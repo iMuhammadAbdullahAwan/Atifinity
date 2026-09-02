@@ -1,3 +1,10 @@
+# Dependencies
+node_modules/
+
+# Build output — generated from src/css/input.css by the GitHub Actions
+# workflow (.github/workflows/deploy.yml) on every push, never committed.
+dist/
+
 # OS files
 .DS_Store
 Thumbs.db
