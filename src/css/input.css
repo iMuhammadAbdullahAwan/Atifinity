@@ -333,57 +333,6 @@
     @apply max-w-2xl pb-6 text-body text-ink-muted;
   }
 
-  /* Growth Simulator sliders: a thin brand-gradient thumb on a translucent
-     track. Thumb/track pseudo-elements need real CSS rules per browser
-     engine, so this can't be pure @apply on the base selector. */
-  .range-slider {
-    @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-ink/10 outline-none;
-  }
-  .range-slider::-webkit-slider-runnable-track {
-    @apply h-1.5 rounded-full;
-  }
-  .range-slider::-moz-range-track {
-    @apply h-1.5 rounded-full bg-ink/10;
-  }
-  .range-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    margin-top: -6px;
-    border-radius: 9999px;
-    background: linear-gradient(90deg, rgb(var(--raw-primary-bright)), rgb(var(--raw-accent)));
-    border: 2px solid rgb(var(--color-bg));
-    cursor: pointer;
-  }
-  .range-slider::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 9999px;
-    background: linear-gradient(90deg, rgb(var(--raw-primary-bright)), rgb(var(--raw-accent)));
-    border: 2px solid rgb(var(--color-bg));
-    cursor: pointer;
-  }
-  .range-slider:focus-visible {
-    @apply outline outline-2 outline-offset-4 outline-primary;
-  }
-
-  /* Live numbers (Growth Simulator results, stat figures) — mono, tabular,
-     a deliberate "instrument panel" texture reserved for real data. */
-  .stat-mono {
-    @apply font-mono tabular-nums transition-transform duration-200;
-  }
-
-  /* Wipe-reveal used once, on the Example Engagement visual — see
-     brand-motion.js's initClipReveal. Distinct from the generic
-     opacity/translate fade every other section uses via [data-reveal]. */
-  .clip-reveal {
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .clip-reveal.is-visible {
-    clip-path: inset(0 0 0 0);
-  }
 }
 
 /* ==========================================================================

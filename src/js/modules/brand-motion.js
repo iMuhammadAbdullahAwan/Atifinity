@@ -93,38 +93,3 @@ Affinity.initProcessProgress = function initProcessProgress() {
   window.addEventListener('resize', onScroll, { passive: true });
   update();
 };
-
-/**
- * Clip-path reveal — used once, on the Example Engagement before/after
- * visual: it wipes into view left-to-right the first time it enters the
- * viewport, instead of the generic opacity fade every other section uses.
- */
-Affinity.initClipReveal = function initClipReveal() {
-  var items = Array.prototype.slice.call(document.querySelectorAll('[data-clip-reveal]'));
-  if (!items.length) return;
-
-  if (
-    !('IntersectionObserver' in window) ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) {
-    items.forEach(function (el) {
-      el.classList.add('is-visible');
-    });
-    return;
-  }
-
-  var observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.25 }
-  );
-
-  items.forEach(function (el) {
-    observer.observe(el);
-  });
-};
